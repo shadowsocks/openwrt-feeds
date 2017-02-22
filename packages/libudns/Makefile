@@ -17,21 +17,16 @@ PKG_MD5SUM:=51e141b044b078d71ebb71f823959c1b
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/udns/Default
+define Package/libudns
   SECTION:=net
   CATEGORY:=Network
   URL:=http://www.corpit.ru/mjt/udns.html
   SUBMENU:=IP Addresses and Names
+  TITLE:=udns library, stub DNS resolver -  shared libraries 
 endef
 
-define Package/udns-libs
-  $(call Package/udns/Default)
-  TITLE:=udns shared libraries
-endef
-
-define Package/udns-utils
-  $(call Package/udns/Default)
-  TITLE+= udns utils (all)
+define Package/libudns/description
+The DNS library, udns, implements thread-safe stub DNS resolver functionality, which may be used both traditional, syncronous way and asyncronously, with application-supplied event loop.
 endef
 
 export BUILD_CC="$(TARGET_CC)"
@@ -46,6 +41,7 @@ define Build/Configure
 		$(DISABLE_IPV6) \
 	)
 endef
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) all
 	$(MAKE) -C $(PKG_BUILD_DIR) shared
@@ -60,17 +56,9 @@ define Build/InstallDev
 	$(CP) $(PKG_BUILD_DIR)/lib*.{a,so*} $(1)/usr/lib
 endef
 
-define Package/udns-libs/install
+define Package/libudns/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/lib*.so* $(1)/usr/lib
 endef
 
-define Package/udns-utils/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/dnsget $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ex-rdns $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/rblcheck $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,udns-libs))
-$(eval $(call BuildPackage,udns-utils))
+$(eval $(call BuildPackage,libudns))
