@@ -23,6 +23,8 @@ PKG_FIXUP:=autoreconf
 
 PKG_INSTALL:=1
 
+PKG_FLAGS:=hold essential nonshared
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/libpcre/default
@@ -34,17 +36,6 @@ endef
 define Package/libpcre
   $(call Package/libpcre/default)
   TITLE:=A Perl Compatible Regular Expression library
-endef
-
-define Package/libpcre16
-  $(call Package/libpcre/default)
-  TITLE:=A Perl Compatible Regular Expression library (16bit support)
-endef
-
-define Package/libpcrecpp
-  $(call Package/libpcre/default)
-  TITLE:=C++ wrapper for Perl Compatible Regular Expression library
-  DEPENDS:=+libpcre +libstdcpp
 endef
 
 TARGET_CFLAGS += $(FPIC)
@@ -86,16 +77,4 @@ define Package/libpcre/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libpcre.so $(1)/usr/lib/
 endef
 
-define Package/libpcre16/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libpcre16.so* $(1)/usr/lib/
-endef
-
-define Package/libpcrecpp/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libpcrecpp.so.* $(1)/usr/lib/
-endef
-
 $(eval $(call BuildPackage,libpcre))
-$(eval $(call BuildPackage,libpcre16))
-$(eval $(call BuildPackage,libpcrecpp))
