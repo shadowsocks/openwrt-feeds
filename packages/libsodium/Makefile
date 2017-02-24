@@ -22,8 +22,6 @@ PKG_INSTALL:=1
 PKG_MAINTAINER:=Damiano Renfer <damiano.renfer@gmail.com>
 PKG_LICENSE:=ISC
 
-PKG_FLAGS:=hold essential nonshared
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/libsodium

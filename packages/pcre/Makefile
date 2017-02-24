@@ -23,8 +23,6 @@ PKG_FIXUP:=autoreconf
 
 PKG_INSTALL:=1
 
-PKG_FLAGS:=hold essential nonshared
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/libpcre/default
