@@ -12,7 +12,7 @@ PKG_VERSION:=8.40
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
+PKG_SOURCE_URL:=https://ftp.pcre.org/pub/pcre/
 PKG_MD5SUM:=41a842bf7dcecd6634219336e2167d1d
 PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de>
 
