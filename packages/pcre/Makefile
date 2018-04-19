@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pcre
-PKG_VERSION:=8.41
-PKG_RELEASE:=2
+PKG_VERSION:=8.42
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://ftp.pcre.org/pub/pcre/
-PKG_MD5SUM:=c160d22723b1670447341b08c58981c1
+PKG_HASH:=69acbc2fbdefb955d42a4c606dfde800c2885711d2979e356c0636efde9ec3b5
 PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de>
 
 PKG_LICENSE:=BSD-3-Clause
@@ -21,7 +21,6 @@ PKG_LICENSE_FILES:=LICENCE
 
 PKG_FIXUP:=autoreconf
 PKG_USE_MIPS16:=0
-
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk

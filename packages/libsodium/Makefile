@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://download.libsodium.org/libsodium/releases
-PKG_MD5SUM:=37b18839e57e7a62834231395c8e962b
+PKG_HASH:=eeadc7e1e1bcef09680fb4837d448fbdf57224978f865ac1c16745868fbd0533
 
 PKG_FIXUP:=libtool autoreconf
 PKG_USE_MIPS16:=0
