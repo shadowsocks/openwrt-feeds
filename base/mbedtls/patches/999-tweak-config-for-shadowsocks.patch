@@ -1,7 +1,7 @@
 
 --- a/include/mbedtls/config.h
 +++ b/include/mbedtls/config.h
-@@ -1458,7 +1458,7 @@
+@@ -1492,7 +1492,7 @@
   *
   * Uncomment this to enable pthread mutexes.
   */
@@ -10,7 +10,7 @@
  
  /**
   * \def MBEDTLS_VERSION_FEATURES
-@@ -1801,7 +1801,7 @@
+@@ -1835,7 +1835,7 @@
   *      MBEDTLS_TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256
   */
@@ -19,7 +19,7 @@
  
  /**
   * \def MBEDTLS_CCM_C
-@@ -2538,7 +2538,7 @@
+@@ -2572,7 +2572,7 @@
   *
   * Enable this layer to allow use of mutexes within mbed TLS
   */
