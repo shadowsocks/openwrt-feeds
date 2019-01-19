@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mbedtls
-PKG_VERSION:=2.13.0
-PKG_RELEASE:=2
+PKG_VERSION:=2.16.0
+PKG_RELEASE:=1
 PKG_USE_MIPS16:=0
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-gpl.tgz
 PKG_SOURCE_URL:=https://tls.mbed.org/download/
-PKG_HASH:=a08ddf08aae55fc4f48fbc6281fcb08bc5c53ed53ffd15355ee0d75ec32b53ae
+PKG_HASH:=c8d7a4696287cb9533c455bdd65859106dbdd4472c125194387486e6d4df2799
 
 PKG_BUILD_PARALLEL:=1
 PKG_LICENSE:=GPL-2.0+
@@ -42,9 +42,23 @@ $(call Package/mbedtls/Default)
   ABI_VERSION:=$(PKG_VERSION)-$(PKG_RELEASE)
 endef
 
+define Package/mbedtls-util
+$(call Package/mbedtls/Default)
+  SECTION:=utils
+  CATEGORY:=Utilities
+  TITLE+= (utilities)
+  DEPENDS:=+libmbedtls
+endef
+
 define Package/libmbedtls/description
 $(call Package/mbedtls/Default/description)
 This package contains the mbedtls library.
+endef
+
+define Package/mbedtls-util/description
+$(call Package/mbedtls/Default/description)
+This package contains mbedtls helper programs for private key and
+CSR generation (gen_key, cert_req)
 endef
 
 PKG_INSTALL:=1
@@ -70,4 +84,11 @@ define Package/libmbedtls/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so* $(1)/usr/lib/
 endef
 
+define Package/mbedtls-util/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/gen_key $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/cert_req $(1)/usr/bin/
+endef
+
 $(eval $(call BuildPackage,libmbedtls))
+$(eval $(call BuildPackage,mbedtls-util))
