@@ -12,7 +12,7 @@ PKG_VERSION:=8.45
 PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://versaweb.dl.sourceforge.net/project/pcre/pcre/8.45/
+PKG_SOURCE_URL:=https://versaweb.dl.sourceforge.net/project/pcre/pcre/$(PKG_VERSION)/
 PKG_HASH:=4e6ce03e0336e8b4a3d6c2b70b1c5e18590a5673a98186da90d4f33c23defc09
 PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de>
 
